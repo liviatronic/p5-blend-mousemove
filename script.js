@@ -9,24 +9,20 @@ function preload() {
 
 function setup() {
     createCanvas(displayWidth, displayHeight);
+    background(255);
 }
 
 function draw() {
-
     //map the mousex and y values to fit the number of images in the array
     let ax = round(map(mouseX, 0, width, 0, 47));
     let ay = round(map(mouseY, 0, height, 0, 47));
-    console.log('ax is ' +
-        ax);
-    console.log('ay is ' +
-        ay);
 
     //set the variable to the image in the array corresponding to mouse position
     let mountains = imgs[ax];
     let bricks = imgs[ay];
 
     //blend two images together, and display them
-    mountains.blend(bricks, 0, 0, displayWidth, displayHeight, 0, 0, displayWidth, displayHeight, BURN);
+    mountains.blend(bricks, 0, 0, displayWidth, displayHeight, 0, 0, displayWidth, displayHeight, OVERLAY);
     image(bricks, 0, 0);
     image(mountains, 0, 0);
 }
